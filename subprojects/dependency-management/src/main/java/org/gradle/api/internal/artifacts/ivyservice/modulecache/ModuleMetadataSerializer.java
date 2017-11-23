@@ -249,7 +249,6 @@ public class ModuleMetadataSerializer {
                 writeArtifacts(ivyDependency.getDependencyArtifacts());
                 writeExcludeRules(ivyDependency.getAllExcludes());
                 writeString(ivyDependency.getDynamicConstraintVersion());
-                writeBoolean(ivyDependency.isForce());
                 writeBoolean(ivyDependency.isChanging());
                 writeBoolean(ivyDependency.isTransitive());
                 writeBoolean(ivyDependency.isOptional());
@@ -515,7 +514,7 @@ public class ModuleMetadataSerializer {
                     boolean changing = readBoolean();
                     boolean transitive = readBoolean();
                     boolean optional = readBoolean();
-                    return new IvyDependencyMetadata(requested, dynamicConstraintVersion, force, changing, transitive,  optional, configMappings, artifacts, excludes);
+                    return new IvyDependencyMetadata(requested, dynamicConstraintVersion, changing, transitive,  optional, configMappings, artifacts, excludes);
                 case TYPE_MAVEN:
                     artifacts = readDependencyArtifactDescriptors();
                     excludes = readDependencyExcludes();
