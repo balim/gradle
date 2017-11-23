@@ -84,10 +84,10 @@ public class ContinuousBuildActionExecuter implements BuildActionExecuter<BuildA
             }
         }
     }
-    
+
     private CancellableOperationManager createCancellableOperationManager(BuildActionParameters actionParameters, BuildCancellationToken cancellationToken) {
         final CancellableOperationManager cancellableOperationManager;
-        if (actionParameters.isInteractive()) {
+        if (actionParameters.isContinuous()) {
             if (!(System.in instanceof DisconnectableInputStream)) {
                 System.setIn(new DisconnectableInputStream(System.in));
             }
